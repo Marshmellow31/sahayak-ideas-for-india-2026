@@ -9,6 +9,7 @@ Sahayak is a voice-first AI work assistant for India's deskless and frontline wo
 - `03-Sahayak-Prototype/` - runnable FastAPI + SQLite + frontend prototype.
 - `04-Screenshots/` - walkthrough screenshots and prototype walkthrough PDF.
 - `05-Demo-Video/` - demo video package.
+- `06-Team-Profile/` - one-page team details and role profiles.
 
 ## Demo Video
 
@@ -16,7 +17,7 @@ Use this file for submission:
 
 `05-Demo-Video/Sahayak-Demo-Compressed.mp4`
 
-The original MOV export is also kept in the same folder as a backup.
+The original MOV export is also kept in the same folder as a backup. Do not upload it to the submission folder; the official form limits each supporting file to 25 MB.
 
 ## Run The Prototype
 

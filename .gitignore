@@ -1,6 +1,9 @@
 # Local assistant / QA artifacts
 .claude/
 .qa-render/
+.qa-build/
+*.pptx.inspect.ndjson
+02-Deck/Sahayak-Concept-to-Prototype-Plan/
 tools/
 
 # Python/runtime caches
@@ -17,4 +20,3 @@ __pycache__/
 Thumbs.db
 Desktop.ini
 .DS_Store
-
