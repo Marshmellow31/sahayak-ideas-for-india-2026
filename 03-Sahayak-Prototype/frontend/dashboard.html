@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahayak — Supervisor Dashboard</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',system-ui,sans-serif; }
+  body { background:#F2F6F6; color:#1B2A33; min-height:100vh; }
+  header { background:#07393D; color:#fff; padding:14px 22px; display:flex; align-items:center; gap:12px; }
+  header .logo { width:36px; height:36px; border-radius:50%; background:#F4A226; display:flex; align-items:center; justify-content:center; font-size:19px; }
+  header h1 { font-size:18px; font-weight:600; flex:1; }
+  header a, header button { color:#fff; background:#0B5E63; border:none; border-radius:8px; padding:8px 14px; font-size:13px; text-decoration:none; cursor:pointer; }
+  main { max-width:1100px; margin:0 auto; padding:20px 16px 40px; }
+
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:20px; }
+  .tile { background:#fff; border-radius:12px; padding:14px 16px; box-shadow:0 1px 4px rgba(7,57,61,.08); }
+  .tile .num { font-size:30px; font-weight:700; color:#0B5E63; }
+  .tile .lbl { font-size:12.5px; color:#5b6b72; margin-top:2px; }
+  .tile.accent .num { color:#D97706; }
+
+  h2 { font-size:15px; margin:18px 0 8px; color:#07393D; }
+  .panel { background:#fff; border-radius:12px; box-shadow:0 1px 4px rgba(7,57,61,.08); overflow:hidden; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th { text-align:left; padding:9px 12px; background:#EAF3F3; color:#0B5E63; font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+  td { padding:9px 12px; border-top:1px solid #eef2f2; vertical-align:top; }
+  .pill { display:inline-block; padding:2px 9px; border-radius:10px; font-size:11.5px; font-weight:600; }
+  .pending { background:#FFF3D6; color:#8a5b00; }
+  .approved { background:#DDF5E4; color:#0d6b32; }
+  .rejected { background:#FDE2E2; color:#a12626; }
+  .open { background:#FDE2E2; color:#a12626; }
+  .resolved { background:#DDF5E4; color:#0d6b32; }
+  .prio { background:#7A1F1F; color:#fff; }
+  .btn { border:none; border-radius:7px; padding:6px 11px; font-size:12.5px; cursor:pointer; margin-right:6px; }
+  .ok { background:#0B5E63; color:#fff; }
+  .no { background:#fff; color:#a12626; border:1px solid #f2c4c4; }
+  .empty { padding:16px; color:#8a979d; font-size:13px; }
+
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:760px){ .grid2 { grid-template-columns:1fr; } }
+  .heat { display:flex; flex-direction:column; gap:6px; padding:14px; }
+  .hrow { display:flex; align-items:center; gap:10px; font-size:13px; }
+  .hlbl { width:130px; color:#37474f; flex-shrink:0; }
+  .hbar { height:20px; border-radius:5px; background:linear-gradient(90deg,#0B5E63,#F4A226); min-width:6px; }
+  .hn { color:#5b6b72; font-size:12px; }
+  .langs { display:flex; gap:10px; padding:14px; flex-wrap:wrap; }
+  .langc { flex:1; min-width:100px; background:#EAF3F3; border-radius:10px; padding:12px; text-align:center; }
+  .langc .n { font-size:24px; font-weight:700; color:#0B5E63; }
+  .langc .l { font-size:12.5px; color:#5b6b72; }
+  footer { text-align:center; font-size:12px; color:#8a979d; padding:14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🛟</div>
+  <h1>Sahayak — Supervisor Dashboard <span style="font-weight:400;font-size:12px;opacity:.75">· Seva Hospital & Narmada Auto, Bharuch</span></h1>
+  <a href="/">Worker chat →</a>
+  <button id="reset" title="Reseed demo data">Reset demo</button>
+</header>
+<main>
+  <div class="tiles" id="tiles"></div>
+
+  <h2>📋 Leave approvals</h2>
+  <div class="panel"><table id="apprTable">
+    <thead><tr><th>ID</th><th>Worker</th><th>Type</th><th>Date</th><th>Reason (as spoken)</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody></tbody></table><div class="empty" id="apprEmpty" hidden>No leave requests yet.</div>
+  </div>
+
+  <h2>🚨 Escalations & grievances</h2>
+  <div class="panel"><table id="escTable">
+    <thead><tr><th>ID</th><th>Worker</th><th>Message</th><th>Lang</th><th>Priority</th><th>Status</th><th>Action</th></tr></thead>
+    <tbody></tbody></table><div class="empty" id="escEmpty" hidden>No escalations. 🎉</div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h2>🔥 Training-gap heatmap <span style="font-weight:400;color:#8a979d">(what workers ask most)</span></h2>
+      <div class="panel heat" id="heat"></div>
+    </div>
+    <div>
+      <h2>🗣️ Language mix</h2>
+      <div class="panel langs" id="langs"></div>
+      <h2>📚 Most-consulted SOPs</h2>
+      <div class="panel heat" id="sopheat"></div>
+    </div>
+  </div>
+</main>
+<footer>Sahayak prototype · IIIT Vadodara · simulated demo data — auto-refreshes every 5 s</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const INTENT_LBL = {
+  leave_balance:'Leave balance', apply_leave:'Apply leave', my_shifts:'Shifts',
+  payslip:'Payslip / salary', attendance:'Attendance', sop_query:'SOP / how-to',
+  grievance:'Grievance', escalate:'Ask a human', unknown:'Unanswered',
+  greeting:'Greeting', help:'Help', thanks:'Thanks', notification:'Notification'
+};
+const LANG_LBL = { en:'English', hi:'हिन्दी Hindi', gu:'ગુજરાતી Gujarati' };
+
+function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+async function refresh() {
+  const [s, appr, escs] = await Promise.all([
+    fetch('/api/dashboard/summary').then(r=>r.json()),
+    fetch('/api/dashboard/approvals').then(r=>r.json()),
+    fetch('/api/dashboard/escalations').then(r=>r.json()),
+  ]);
+
+  $('tiles').innerHTML = `
+    <div class="tile"><div class="num">${s.queries_today}</div><div class="lbl">Queries today</div></div>
+    <div class="tile"><div class="num">${s.resolution_pct}%</div><div class="lbl">First-contact resolution</div></div>
+    <div class="tile"><div class="num">${s.deflection_pct}%</div><div class="lbl">HR-query deflection</div></div>
+    <div class="tile accent"><div class="num">${s.escalations_open}</div><div class="lbl">Escalations open</div></div>
+    <div class="tile"><div class="num">${s.active_workers}</div><div class="lbl">Active workers today</div></div>`;
+
+  const at = $('apprTable').querySelector('tbody');
+  at.innerHTML = appr.map(r => `
+    <tr><td>LR-${String(r.id).padStart(4,'0')}</td>
+    <td><b>${esc(r.name)}</b><br><span style="color:#8a979d;font-size:11.5px">${esc(r.role)}</span></td>
+    <td>${r.type}</td><td>${r.from_date}</td>
+    <td style="max-width:230px">${esc(r.reason)}</td>
+    <td><span class="pill ${r.status}">${r.status}</span></td>
+    <td>${r.status==='pending' ? `
+      <button class="btn ok" onclick="decide(${r.id},'approve')">Approve</button>
+      <button class="btn no" onclick="decide(${r.id},'reject')">Reject</button>` : '—'}</td></tr>`).join('');
+  $('apprEmpty').hidden = appr.length > 0;
+
+  const et = $('escTable').querySelector('tbody');
+  et.innerHTML = escs.map(r => `
+    <tr><td>ES-${String(r.id).padStart(4,'0')}</td>
+    <td><b>${esc(r.name)}</b><br><span style="color:#8a979d;font-size:11.5px">${esc(r.role)}</span></td>
+    <td style="max-width:260px">${esc(r.text)}</td>
+    <td>${r.lang}</td>
+    <td>${r.priority ? '<span class="pill prio">PRIORITY</span>' : '—'}</td>
+    <td><span class="pill ${r.status}">${r.status}</span></td>
+    <td>${r.status==='open' ? `<button class="btn ok" onclick="resolveEsc(${r.id})">Mark resolved</button>` : '—'}</td></tr>`).join('');
+  $('escEmpty').hidden = escs.length > 0;
+
+  const max = Math.max(1, ...s.intent_heatmap.map(h=>h.n));
+  $('heat').innerHTML = s.intent_heatmap.length ? s.intent_heatmap.map(h => `
+    <div class="hrow"><div class="hlbl">${INTENT_LBL[h.intent]||h.intent}</div>
+    <div class="hbar" style="width:${Math.round(75*h.n/max)}%"></div>
+    <div class="hn">${h.n}</div></div>`).join('')
+    : '<div class="empty">No queries yet — send some messages in the worker chat.</div>';
+
+  const smax = Math.max(1, ...s.sop_heatmap.map(h=>h.n));
+  $('sopheat').innerHTML = s.sop_heatmap.length ? s.sop_heatmap.map(h => `
+    <div class="hrow"><div class="hlbl">${h.sop_id}</div>
+    <div class="hbar" style="width:${Math.round(70*h.n/smax)}%"></div>
+    <div class="hn">${h.n}</div></div>`).join('')
+    : '<div class="empty">No SOP lookups yet.</div>';
+
+  const langs = Object.entries(s.language_mix);
+  $('langs').innerHTML = langs.length ? langs.map(([l,n]) => `
+    <div class="langc"><div class="n">${n}</div><div class="l">${LANG_LBL[l]||l}</div></div>`).join('')
+    : '<div class="empty">No data yet.</div>';
+}
+
+async function decide(id, action) {
+  await fetch('/api/approvals/'+id, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action})});
+  refresh();
+}
+async function resolveEsc(id) {
+  await fetch('/api/escalations/'+id+'/resolve', {method:'POST'});
+  refresh();
+}
+$('reset').onclick = async () => {
+  if (confirm('Reset all demo data to the seeded state?')) {
+    await fetch('/api/reset', {method:'POST'}); refresh();
+  }
+};
+refresh();
+setInterval(refresh, 5000);
+</script>
+</body>
+</html>

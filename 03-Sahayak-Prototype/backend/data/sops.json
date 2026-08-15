@@ -1,0 +1,196 @@
+{
+  "documents": [
+    {
+      "doc_id": "HOSP-IC-01",
+      "doc": "Infection Control & Housekeeping SOP (Hospital)",
+      "sections": [
+        {
+          "section_id": "1.1",
+          "title": "Hand hygiene",
+          "body_en": "1. Wash hands with soap and water for at least 40 seconds, or use alcohol hand rub for 20 seconds. 2. Always clean hands BEFORE touching a patient area and AFTER touching any patient, bed, or equipment. 3. Remove rings and watches before washing. 4. Dry hands with a single-use paper towel.",
+          "body_hi": "1. साबुन और पानी से कम से कम 40 सेकंड हाथ धोएं, या 20 सेकंड अल्कोहल हैंड-रब लगाएं। 2. मरीज़ या बेड को छूने से पहले और बाद में हमेशा हाथ साफ करें। 3. धोने से पहले अंगूठी-घड़ी उतारें। 4. हाथ केवल एक बार इस्तेमाल होने वाले पेपर टॉवल से सुखाएं।",
+          "keywords": ["hand", "hygiene", "wash", "handwash", "haath", "dhona", "sanitizer", "hand rub", "हाथ", "धोना"]
+        },
+        {
+          "section_id": "1.2",
+          "title": "Ward mopping and disinfection",
+          "body_en": "1. Prepare 1% sodium hypochlorite solution fresh each shift. 2. Mop from the cleanest area towards the dirtiest (inner ward to entrance). 3. Use three-bucket technique: detergent, rinse, disinfectant. 4. Change mop water after every room. 5. Put up the yellow wet-floor sign before starting.",
+          "keywords": ["mop", "mopping", "floor", "cleaning", "disinfect", "hypochlorite", "pochha", "safai", "सफाई", "पोछा", "ward clean"]
+        },
+        {
+          "section_id": "1.3",
+          "title": "Blood or fluid spill management",
+          "body_en": "1. Wear gloves and mask first. 2. Cover the spill with absorbent paper. 3. Pour 1% hypochlorite over the covered spill and wait 10 minutes. 4. Collect with a scoop, never with bare hands. 5. Discard everything into the YELLOW bag. 6. Mop the area and wash hands.",
+          "body_hi": "1. पहले दस्ताने और मास्क पहनें। 2. गिरे हुए खून/द्रव को सोखने वाले पेपर से ढकें। 3. उस पर 1% हाइपोक्लोराइट डालकर 10 मिनट रुकें। 4. स्कूप से उठाएं, कभी खाली हाथ नहीं। 5. सब कुछ पीली थैली में डालें। 6. जगह पोछें और हाथ धोएं।",
+          "keywords": ["spill", "blood", "khoon", "gira", "fluid", "खून", "spill kaise", "blood spill"]
+        },
+        {
+          "section_id": "1.4",
+          "title": "Isolation room cleaning",
+          "body_en": "1. Enter only with full PPE: gown, N95 mask, gloves, face shield. 2. Clean isolation rooms LAST in your round. 3. Use dedicated mops and buckets kept inside the room. 4. Discard PPE in the yellow bag inside the anteroom before leaving. 5. Perform hand hygiene immediately after exit.",
+          "keywords": ["isolation", "isolation room", "covid", "infectious", "quarantine room", "आइसोलेशन"]
+        }
+      ]
+    },
+    {
+      "doc_id": "HOSP-SF-02",
+      "doc": "Hospital Staff Safety SOP",
+      "sections": [
+        {
+          "section_id": "2.1",
+          "title": "Needle-stick injury protocol",
+          "body_en": "1. Do NOT squeeze or suck the wound. 2. Wash the area immediately with soap and running water for 5 minutes. 3. Inform your ward in-charge or supervisor at once. 4. Report to Emergency/Casualty within 1 hour for assessment — PEP (post-exposure medicine) works best if started early. 5. Fill the incident register with the needle's source details. 6. Follow-up blood tests at 6 weeks, 3 months and 6 months.",
+          "body_hi": "1. घाव को दबाएं या चूसें नहीं। 2. तुरंत साबुन और बहते पानी से 5 मिनट धोएं। 3. तुरंत वार्ड इंचार्ज/सुपरवाइज़र को बताएं। 4. 1 घंटे के अंदर इमरजेंसी/कैज़ुअल्टी में रिपोर्ट करें — PEP दवा जल्दी शुरू करने पर सबसे असरदार है। 5. इंसिडेंट रजिस्टर भरें। 6. 6 हफ्ते, 3 महीने और 6 महीने पर खून की जांच कराएं।",
+          "keywords": ["needle", "needle stick", "needlestick", "sui", "suyi", "injection lag", "prick", "सुई", "chubh", "needle lag gayi", "sui lag"]
+        },
+        {
+          "section_id": "2.2",
+          "title": "Safe patient transfer and lifting",
+          "body_en": "1. Never lift a patient alone — always call a second staff member. 2. Lock the wheelchair/trolley brakes before transfer. 3. Bend your knees, keep your back straight, hold the patient close. 4. Use the transfer sheet or slide board for bed-to-trolley moves. 5. Raise trolley side rails before moving.",
+          "keywords": ["patient transfer", "lift", "lifting", "shift patient", "trolley", "wheelchair", "uthana", "मरीज़", "patient uthana"]
+        },
+        {
+          "section_id": "2.3",
+          "title": "Fire and evacuation (hospital)",
+          "body_en": "1. Raise the alarm: shout 'CODE RED' and press the nearest fire alarm. 2. Follow R.A.C.E — Rescue patients in danger, Alarm, Contain (close doors), Evacuate/Extinguish. 3. Use lifts is FORBIDDEN during fire — use stairs and ramps. 4. Move patients horizontally to the next fire compartment first. 5. Assemble at the marked assembly point and report headcount.",
+          "keywords": ["fire", "aag", "evacuation", "code red", "आग", "fire lag", "emergency exit"]
+        }
+      ]
+    },
+    {
+      "doc_id": "HOSP-BW-03",
+      "doc": "Biomedical Waste Management SOP",
+      "sections": [
+        {
+          "section_id": "3.1",
+          "title": "Waste segregation colour codes",
+          "body_en": "YELLOW bag: infectious waste — dressings, body-fluid soaked items, lab waste. RED bag: contaminated plastic — tubing, syringes without needles, gloves, IV sets. WHITE (translucent) container: sharps — needles, blades. BLUE box: broken glass and metallic implants. General waste (paper, food) goes in ordinary black/green bins only.",
+          "body_hi": "पीली थैली: संक्रमित कचरा — पट्टियां, खून लगी चीज़ें। लाल थैली: प्लास्टिक — ट्यूब, बिना सुई की सीरिंज, दस्ताने। सफेद डिब्बा: धारदार — सुई, ब्लेड। नीला डिब्बा: टूटा कांच। आम कचरा (कागज़, खाना) सिर्फ सामान्य कूड़ेदान में।",
+          "keywords": ["waste", "bag", "yellow bag", "red bag", "kachra", "segregation", "colour", "color", "dustbin", "कचरा", "bin", "biomedical"]
+        },
+        {
+          "section_id": "3.2",
+          "title": "Sharps disposal",
+          "body_en": "1. Never recap, bend, or break used needles. 2. Drop sharps directly into the white puncture-proof container at the point of use. 3. Seal and replace the container when 3/4 full — never press waste down. 4. Only trained staff transport sealed sharps containers.",
+          "keywords": ["sharps", "needle disposal", "sui phekna", "recap", "syringe disposal", "blade"]
+        },
+        {
+          "section_id": "3.3",
+          "title": "Waste transport within hospital",
+          "body_en": "1. Collect bags when 3/4 full; tie with a gooseneck knot. 2. Label each bag with ward, date, and waste class. 3. Use the dedicated covered trolley and the service lift only. 4. Waste moves to the central storage within 24 hours of generation. 5. Wear thick gloves, mask, and apron during transport.",
+          "keywords": ["waste transport", "trolley", "storage", "kachra le jana", "waste collection"]
+        }
+      ]
+    },
+    {
+      "doc_id": "MFG-OP-01",
+      "doc": "Machine Operations SOP (Manufacturing)",
+      "sections": [
+        {
+          "section_id": "4.1",
+          "title": "Machine start-up checklist",
+          "body_en": "1. Check the area around the machine is clear of tools and people. 2. Verify all guards and covers are fixed in place. 3. Check oil/coolant level is between MIN and MAX marks. 4. Turn the main isolator ON, then press the green START button. 5. Let the machine idle for 2 minutes and watch for unusual noise or vibration before loading material.",
+          "body_hi": "1. मशीन के आसपास औज़ार/लोग न हों, यह देखें। 2. सभी गार्ड और कवर लगे हों। 3. तेल/कूलेंट MIN-MAX के बीच हो। 4. मेन आइसोलेटर ON करें, फिर हरा START बटन दबाएं। 5. 2 मिनट खाली चलाकर आवाज़/कंपन देखें, फिर माल लगाएं।",
+          "keywords": ["start", "startup", "machine start", "chalu", "shuru", "मशीन", "start kaise", "machine on", "chalana"]
+        },
+        {
+          "section_id": "4.2",
+          "title": "Machine shutdown",
+          "body_en": "1. Finish or remove the current workpiece. 2. Press the red STOP button and wait for all movement to fully stop. 3. Turn the isolator OFF. 4. Clean chips/dust from the bed and guards. 5. Log the shutdown time and any issues in the machine logbook.",
+          "keywords": ["shutdown", "stop", "machine band", "band karna", "switch off", "बंद"]
+        },
+        {
+          "section_id": "4.3",
+          "title": "Lockout-Tagout (LOTO) before maintenance",
+          "body_en": "1. Never put your hand inside a machine that is only switched off — it must be locked out. 2. Turn the isolator OFF and attach YOUR personal padlock and red tag. 3. Try the START button to prove the machine cannot run. 4. Only the person who fitted the lock may remove it. 5. If two people work together, both fit their own locks.",
+          "body_hi": "1. सिर्फ बंद मशीन में कभी हाथ न डालें — लॉक-आउट ज़रूरी है। 2. आइसोलेटर OFF कर अपना ताला और लाल टैग लगाएं। 3. START दबाकर जांचें कि मशीन नहीं चलती। 4. ताला वही खोलेगा जिसने लगाया है। 5. दो लोग काम करें तो दोनों अपना-अपना ताला लगाएं।",
+          "keywords": ["lockout", "tagout", "loto", "maintenance", "repair", "jam", "fasa", "machine jam", "lock", "ताला", "मरम्मत"]
+        },
+        {
+          "section_id": "4.4",
+          "title": "Clearing a material jam",
+          "body_en": "1. Press STOP and wait for zero movement. 2. Apply full Lockout-Tagout (section 4.3) — a jam is maintenance. 3. Use the jam-clearing rod or pliers, never fingers. 4. Check guards are back in place before restart. 5. Report repeated jams to your supervisor — do not keep clearing the same fault.",
+          "keywords": ["jam", "stuck", "material jam", "fas gaya", "atka", "jam clear", "अटका"]
+        }
+      ]
+    },
+    {
+      "doc_id": "MFG-SF-02",
+      "doc": "Factory Safety & PPE SOP",
+      "sections": [
+        {
+          "section_id": "5.1",
+          "title": "PPE requirements by area",
+          "body_en": "Shop floor (always): safety shoes, safety glasses, earplugs above 85 dB zones. Machining: add cut-resistant gloves — but NO gloves while operating rotating spindles. Welding bay: welding helmet, leather apron, gauntlets. Chemical store: nitrile gloves, goggles, apron. No loose clothing, scarves, or jewellery anywhere on the floor.",
+          "body_hi": "शॉप फ्लोर (हमेशा): सेफ्टी जूते, चश्मा, शोर वाले इलाके में इयरप्लग। मशीनिंग: कट-रेसिस्टेंट दस्ताने — पर घूमती स्पिंडल पर दस्ताने मना हैं। वेल्डिंग: हेलमेट, चमड़े का एप्रन। केमिकल स्टोर: नाइट्राइल दस्ताने, गॉगल्स। ढीले कपड़े, दुपट्टा, गहने फ्लोर पर मना हैं।",
+          "keywords": ["ppe", "helmet", "gloves", "dastane", "shoes", "safety", "chashma", "goggles", "सुरक्षा", "kya pehnu", "uniform safety"]
+        },
+        {
+          "section_id": "5.2",
+          "title": "Chemical handling",
+          "body_en": "1. Read the label and the MSDS card before opening any chemical. 2. Always add chemical to water, never water to chemical. 3. Use the fume hood or work in ventilated areas. 4. If chemical touches skin: rinse 15 minutes at the emergency shower/eyewash and inform the supervisor. 5. Store acids and alkalis on separate shelves.",
+          "keywords": ["chemical", "acid", "msds", "spill chemical", "रसायन", "chemical laga"]
+        },
+        {
+          "section_id": "5.3",
+          "title": "Emergency stop and fire (factory)",
+          "body_en": "1. Any worker may hit the red E-STOP mushroom button if someone is in danger. 2. For fire: raise alarm, use the nearest extinguisher only if the fire is smaller than a waste bin. 3. Evacuate via the green-marked routes to the assembly point. 4. Never restart a machine after an E-STOP until the supervisor clears it.",
+          "keywords": ["emergency stop", "e-stop", "estop", "fire factory", "aag factory", "emergency button"]
+        },
+        {
+          "section_id": "5.4",
+          "title": "Injury first-aid and reporting",
+          "body_en": "1. For any injury, however small, go to the first-aid room immediately. 2. Inform your line supervisor within the same shift. 3. An incident report must be filed within 24 hours — this protects YOUR ESI/compensation rights. 4. Serious injuries: do not move the person; call the plant medical officer and security.",
+          "body_hi": "1. छोटी से छोटी चोट पर भी तुरंत फर्स्ट-एड रूम जाएं। 2. उसी शिफ्ट में लाइन सुपरवाइज़र को बताएं। 3. 24 घंटे में इंसिडेंट रिपोर्ट ज़रूर भरें — इससे आपका ESI/मुआवज़ा हक सुरक्षित रहता है। 4. गंभीर चोट में व्यक्ति को हिलाएं नहीं; मेडिकल ऑफिसर और सिक्योरिटी को बुलाएं।",
+          "keywords": ["injury", "chot", "hurt", "first aid", "accident", "चोट", "lag gayi", "ghayal", "compensation", "esi"]
+        }
+      ]
+    },
+    {
+      "doc_id": "HR-POL-01",
+      "doc": "HR Policy Handbook",
+      "sections": [
+        {
+          "section_id": "6.1",
+          "title": "Leave policy",
+          "body_en": "Every worker gets per year: 12 Casual Leaves (CL), 10 Sick Leaves (SL), 15 Earned Leaves (EL). CL cannot be taken for more than 3 days together. SL beyond 2 days needs a medical certificate. EL can be carried forward up to 30 days. Apply through Sahayak or your supervisor BEFORE the leave day, except emergencies.",
+          "body_hi": "हर कर्मचारी को साल में: 12 आकस्मिक छुट्टी (CL), 10 बीमारी छुट्टी (SL), 15 अर्जित छुट्टी (EL)। CL लगातार 3 दिन से ज़्यादा नहीं। 2 दिन से ज़्यादा SL पर मेडिकल सर्टिफिकेट चाहिए। EL 30 दिन तक अगले साल जुड़ती है। छुट्टी के दिन से पहले Sahayak या सुपरवाइज़र से अप्लाई करें।",
+          "keywords": ["leave policy", "leave rules", "chhutti niyam", "cl", "sl", "el", "casual", "sick", "earned", "छुट्टी नियम", "carry forward", "medical certificate"]
+        },
+        {
+          "section_id": "6.2",
+          "title": "Payslip and deductions",
+          "body_en": "Salary is credited by the 7th of each month. Your payslip shows: Basic + HRA + allowances = Gross; deductions are PF (12% of basic), ESI (0.75% if applicable), and Professional Tax. Net = Gross minus deductions. Payslips are available every month through Sahayak or the HR office.",
+          "body_hi": "वेतन हर महीने की 7 तारीख तक आता है। पे-स्लिप में: बेसिक + HRA + भत्ते = ग्रॉस; कटौती में PF (बेसिक का 12%), ESI (0.75%) और प्रोफेशनल टैक्स। नेट = ग्रॉस घटा कटौती। पे-स्लिप हर महीने Sahayak या HR ऑफिस से मिलती है।",
+          "keywords": ["payslip", "deduction", "katauti", "salary date", "pagar kab", "salary slip", "पगार", "hra", "gross", "net"]
+        },
+        {
+          "section_id": "6.3",
+          "title": "Provident Fund (PF) basics",
+          "body_en": "12% of your basic pay goes to PF each month, and the company adds a matching 12%. You can check your balance on the EPFO portal or UMANG app using your UAN number (printed on your payslip). PF can be partially withdrawn for illness, marriage, education, or house purchase after the qualifying period.",
+          "body_hi": "आपकी बेसिक का 12% हर महीने PF में जाता है और कंपनी भी 12% जोड़ती है। बैलेंस EPFO पोर्टल या UMANG ऐप पर UAN नंबर से देखें (UAN पे-स्लिप पर छपा है)। बीमारी, शादी, पढ़ाई या घर के लिए तय अवधि के बाद PF आंशिक निकाला जा सकता है।",
+          "keywords": ["pf", "provident fund", "uan", "epfo", "pf balance", "pf nikalna", "withdraw"]
+        },
+        {
+          "section_id": "6.4",
+          "title": "Overtime rules",
+          "body_en": "Overtime must be approved by your supervisor in advance. Overtime pay is 2x the ordinary hourly rate as per the Factories Act. Maximum overtime is 12 hours in any week. Overtime hours appear separately on your payslip.",
+          "keywords": ["overtime", "ot", "extra hours", "double pay", "ओवरटाइम", "overtime paisa"]
+        },
+        {
+          "section_id": "6.5",
+          "title": "Grievance redressal",
+          "body_en": "Any worker can raise a grievance about behaviour, safety, pay, or facilities — through Sahayak, the suggestion box, or directly to HR. Complaints about harassment go to the Internal Committee (IC) and are kept confidential. No action will ever be taken against a worker for raising a genuine complaint. HR must acknowledge within 48 hours and resolve or update you within 7 days.",
+          "body_hi": "कोई भी कर्मचारी व्यवहार, सुरक्षा, वेतन या सुविधा की शिकायत कर सकता है — Sahayak से, सुझाव पेटी से या सीधे HR से। उत्पीड़न की शिकायत आंतरिक समिति (IC) को जाती है और गोपनीय रहती है। सच्ची शिकायत करने पर कभी कार्रवाई नहीं होगी। HR 48 घंटे में जवाब देगा और 7 दिन में समाधान/अपडेट देगा।",
+          "keywords": ["grievance", "complaint", "shikayat", "शिकायत", "harassment policy", "ic", "posh"]
+        },
+        {
+          "section_id": "6.6",
+          "title": "Attendance and shift rules",
+          "body_en": "Mark attendance at the biometric machine at shift start AND end. Grace time is 10 minutes; three late marks in a month count as half-day leave. Shift changes/swaps need supervisor approval one day in advance. Night-shift workers get a shift allowance shown on the payslip.",
+          "keywords": ["attendance rules", "biometric", "late", "grace", "shift change", "swap", "der se", "हाजिरी नियम", "punch"]
+        }
+      ]
+    }
+  ]
+}

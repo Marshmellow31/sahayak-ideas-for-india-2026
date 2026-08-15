@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahayak — Work Assistant</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',system-ui,sans-serif; }
+  body { background:#d1d7db; display:flex; justify-content:center; min-height:100vh; }
+  .phone { width:100%; max-width:460px; height:100vh; display:flex; flex-direction:column; background:#efeae2; box-shadow:0 0 24px rgba(0,0,0,.25); }
+
+  .header { background:#075E54; color:#fff; padding:10px 14px; display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .avatar { width:40px; height:40px; border-radius:50%; background:#F4A226; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+  .contact { flex:1; min-width:0; }
+  .contact .name { font-weight:600; font-size:16px; }
+  .contact .status { font-size:12px; opacity:.85; }
+  .header select { background:#0b6e62; color:#fff; border:none; border-radius:6px; padding:5px 6px; font-size:12px; max-width:130px; }
+
+  .disclaimer { background:#FCF4CB; color:#54503b; font-size:11px; text-align:center; padding:4px 10px; flex-shrink:0; }
+
+  .chat { flex:1; overflow-y:auto; padding:14px 12px 8px;
+    background-image: radial-gradient(circle at 20% 30%, rgba(7,94,84,.05) 0 6px, transparent 7px),
+                      radial-gradient(circle at 70% 60%, rgba(7,94,84,.04) 0 5px, transparent 6px);
+    background-size: 140px 140px, 180px 180px; }
+  .day { text-align:center; margin:6px 0 12px; }
+  .day span { background:#fff; color:#54656f; font-size:12px; padding:4px 12px; border-radius:8px; box-shadow:0 1px 1px rgba(0,0,0,.08); }
+
+  .row { display:flex; margin-bottom:8px; }
+  .row.worker { justify-content:flex-end; }
+  .bubble { max-width:82%; padding:7px 10px 6px; border-radius:8px; font-size:14.5px; line-height:1.45; white-space:pre-wrap; word-wrap:break-word; box-shadow:0 1px 1px rgba(0,0,0,.1); position:relative; }
+  .worker .bubble { background:#DCF8C6; border-top-right-radius:0; }
+  .sahayak .bubble { background:#fff; border-top-left-radius:0; }
+  .meta { font-size:10.5px; color:#8696a0; text-align:right; margin-top:3px; }
+  .worker .meta::after { content:" ✓✓"; color:#53bdeb; }
+
+  .cite { margin-top:7px; background:#EAF3F3; border-radius:6px; padding:6px 9px; font-size:12px; color:#0B5E63; }
+  .cite b { display:block; font-size:12.5px; }
+  .card { margin-top:7px; background:#FFF6E5; border-radius:6px; padding:7px 9px; font-size:12.5px; color:#7a5200; }
+  .card b { color:#5c3d00; }
+
+  .chips { padding:6px 10px; display:flex; gap:6px; overflow-x:auto; flex-shrink:0; background:transparent; }
+  .chip { background:#fff; border:1px solid #cfd8d8; color:#075E54; font-size:12.5px; padding:6px 12px; border-radius:16px; white-space:nowrap; cursor:pointer; }
+  .chip:active { background:#e7f3f1; }
+
+  .inputbar { display:flex; align-items:center; gap:8px; padding:8px 10px; background:#f0f2f5; flex-shrink:0; }
+  .inputbar input { flex:1; border:none; border-radius:20px; padding:11px 15px; font-size:14.5px; outline:none; background:#fff; }
+  .iconbtn { width:44px; height:44px; border-radius:50%; border:none; cursor:pointer; font-size:19px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .mic { background:#075E54; color:#fff; }
+  .mic.listening { background:#e53935; animation:pulse 1s infinite; }
+  @keyframes pulse { 50% { transform:scale(1.12); } }
+  .send { background:#128C7E; color:#fff; }
+  .langsel { border:1px solid #cfd8d8; border-radius:8px; padding:6px 4px; font-size:12px; background:#fff; color:#075E54; }
+  .ttsbtn { background:#fff; border:1px solid #cfd8d8; color:#075E54; font-size:16px; }
+  .interim { font-size:12px; color:#e53935; padding:0 16px 4px; min-height:16px; font-style:italic; }
+  .typing { color:#54656f; font-size:13px; font-style:italic; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="header">
+    <div class="avatar">🛟</div>
+    <div class="contact">
+      <div class="name">Sahayak · सहायक</div>
+      <div class="status" id="status">online</div>
+    </div>
+    <select id="worker" title="Demo worker picker"></select>
+  </div>
+  <div class="disclaimer">Simulated channel for demo — production uses WhatsApp Business API · <a href="/dashboard" style="color:#0B5E63">Supervisor dashboard →</a></div>
+
+  <div class="chat" id="chat"></div>
+
+  <div class="interim" id="interim"></div>
+  <div class="chips" id="chips"></div>
+
+  <div class="inputbar">
+    <select class="langsel" id="lang" title="Voice language">
+      <option value="hi-IN">हिं</option>
+      <option value="gu-IN">ગુ</option>
+      <option value="en-IN">EN</option>
+    </select>
+    <input id="msg" placeholder="Type or speak a message…" autocomplete="off">
+    <button class="iconbtn ttsbtn" id="tts" title="Speak replies aloud">🔊</button>
+    <button class="iconbtn mic" id="mic" title="Hold-free voice input">🎤</button>
+    <button class="iconbtn send" id="send" title="Send">➤</button>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const chat = $('chat');
+let workerId = null;
+let ttsOn = true;
+let rendered = 0;
+
+const CHIPS = [
+  ["Leave balance", "How many leaves do I have left?"],
+  ["छुट्टी चाहिए", "मुझे कल की छुट्टी चाहिए, तबियत खराब है"],
+  ["My shifts", "What are my shifts this week?"],
+  ["Payslip", "Show my payslip"],
+  ["Needle-stick?", "Needle lag gayi, kya karu?"],
+  ["Machine start", "Machine start kaise karu?"],
+];
+CHIPS.forEach(([label, text]) => {
+  const b = document.createElement('button');
+  b.className = 'chip'; b.textContent = label;
+  b.onclick = () => { $('msg').value = text; send(); };
+  $('chips').appendChild(b);
+});
+
+function fmtTime(iso) {
+  const d = iso ? new Date(iso) : new Date();
+  return d.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
+}
+
+function dayLabel(iso) {
+  const d = iso ? new Date(iso) : new Date();
+  const t = new Date(), y = new Date(Date.now() - 864e5);
+  const same = (a, b) => a.toDateString() === b.toDateString();
+  if (same(d, t)) return 'Today';
+  if (same(d, y)) return 'Yesterday';
+  return d.toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+}
+
+let lastDay = null;
+
+function addDayDivider(ts) {
+  const lbl = dayLabel(ts);
+  if (lbl === lastDay) return;
+  lastDay = lbl;
+  const d = document.createElement('div');
+  d.className = 'day';
+  const s = document.createElement('span');
+  s.textContent = lbl;
+  d.appendChild(s);
+  chat.appendChild(d);
+}
+
+function addBubble(sender, text, meta, ts) {
+  addDayDivider(ts);
+  const row = document.createElement('div');
+  row.className = 'row ' + sender;
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  b.textContent = text;
+  if (meta && meta.citation) {
+    const c = document.createElement('div');
+    c.className = 'cite';
+    c.innerHTML = '📄 <b></b>';
+    c.querySelector('b').textContent = meta.citation.doc;
+    c.append('Section ' + meta.citation.section + ' — ' + meta.citation.title);
+    b.appendChild(c);
+  }
+  if (meta && meta.card && meta.card.kind === 'leave_request') {
+    const c = document.createElement('div');
+    c.className = 'card';
+    c.innerHTML = '<b>📋 Leave request</b><br>';
+    c.append('ID ' + meta.card.rid + ' · ' + meta.card.type + ' · ' + meta.card.date + ' · ' + meta.card.status);
+    b.appendChild(c);
+  }
+  const m = document.createElement('div');
+  m.className = 'meta'; m.textContent = fmtTime(ts);
+  b.appendChild(m);
+  row.appendChild(b);
+  chat.appendChild(row);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function speak(text, lang) {
+  if (!ttsOn || !window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text.replace(/[•✅❌📄🙏🛟]/g, ''));
+  u.lang = lang === 'hi' ? 'hi-IN' : lang === 'gu' ? 'gu-IN' : 'en-IN';
+  speechSynthesis.speak(u);
+}
+
+async function send() {
+  const text = $('msg').value.trim();
+  if (!text || !workerId) return;
+  $('msg').value = '';
+  addBubble('worker', text, null, null);
+  $('status').textContent = 'typing…';
+  rendered += 1;                      // our optimistic worker bubble
+  try {
+    const r = await fetch('/api/chat', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({worker_id: workerId, text, lang_hint: $('lang').value.slice(0,2)})
+    });
+    const reply = await r.json();
+    addBubble('sahayak', reply.text, reply, null);
+    rendered += 1;
+    speak(reply.text, reply.lang);
+  } catch (e) {
+    addBubble('sahayak', '⚠️ Server not reachable. Is the backend running?', null, null);
+  }
+  $('status').textContent = 'online';
+}
+
+async function loadHistory(full) {
+  if (!workerId) return;
+  const r = await fetch('/api/chat/history?worker_id=' + workerId);
+  const msgs = await r.json();
+  if (full) {
+    chat.innerHTML = '';
+    lastDay = null;
+    rendered = 0;
+  }
+  for (let i = rendered; i < msgs.length; i++) {
+    const m = msgs[i];
+    addBubble(m.sender, m.text, m.meta, m.ts);
+    if (m.meta && m.meta.intent === 'notification') speak(m.text, 'hi');
+  }
+  rendered = msgs.length;
+}
+
+async function init() {
+  const workers = await (await fetch('/api/workers')).json();
+  workers.forEach(w => {
+    const o = document.createElement('option');
+    o.value = w.id; o.textContent = w.name.split(' ')[0] + ' · ' + w.id;
+    $('worker').appendChild(o);
+  });
+  workerId = workers[0].id;
+  $('worker').onchange = () => { workerId = $('worker').value; loadHistory(true); };
+  loadHistory(true);
+  setInterval(() => loadHistory(false), 4000);   // pick up approval notifications
+}
+init();
+
+$('send').onclick = send;
+$('msg').addEventListener('keydown', e => { if (e.key === 'Enter') send(); });
+$('tts').onclick = () => { ttsOn = !ttsOn; $('tts').textContent = ttsOn ? '🔊' : '🔇'; if (!ttsOn) speechSynthesis.cancel(); };
+
+// ---- Voice input: Web Speech API (FR-C4), graceful fallback ----
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SR) {
+  let rec = null, listening = false;
+  $('mic').onclick = () => {
+    if (listening) { rec.stop(); return; }
+    rec = new SR();
+    rec.lang = $('lang').value;
+    rec.interimResults = true;
+    rec.onstart = () => { listening = true; $('mic').classList.add('listening'); };
+    rec.onend = () => { listening = false; $('mic').classList.remove('listening'); $('interim').textContent = ''; };
+    rec.onerror = e => { $('interim').textContent = 'Mic error: ' + e.error; };
+    rec.onresult = e => {
+      let final = '', interim = '';
+      for (const res of e.results) (res.isFinal ? final += res[0].transcript : interim += res[0].transcript);
+      $('interim').textContent = interim || final;
+      if (final) { $('msg').value = final; $('interim').textContent = ''; send(); }
+    };
+    rec.start();
+  };
+} else {
+  $('mic').title = 'Voice input needs Chrome/Edge — text works fine';
+  $('mic').style.opacity = .45;
+}
+</script>
+</body>
+</html>

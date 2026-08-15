@@ -1,0 +1,20 @@
+# Local assistant / QA artifacts
+.claude/
+.qa-render/
+tools/
+
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# OS/editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+

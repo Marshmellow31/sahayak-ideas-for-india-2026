@@ -1,0 +1,17 @@
+*.docx binary
+*.pptx binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mov binary
+*.mp4 binary
+*.db binary
+*.pyc binary
+
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.bat text eol=crlf
